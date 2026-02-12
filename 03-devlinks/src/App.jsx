@@ -1,27 +1,37 @@
 
 import './App.css'
+import Links from './components/Links/Links'
 import Perfil from './components/Perfil/Perfil'
+import Rodape from './components/Rodape/Rodape'
+import SocialLinks from './components/SocialLinks/SocialLinks'
 
 function App() {
  
 
   return (
-    <div id='app'>
-<Perfil/>
 
+    <div id="App">
 
+      <Perfil fotoPerfil={"https://placehold.co/100"}> Larissa</Perfil>
 
-      <div className='perfil'>
-        <img src="https://placehold.co/200x200" alt="" />
-        <p>@Larissa</p>
+      <div className="switch"> botão switch</div>
+
+      <ul>
+      <Links url={""}>Inscreva-se</Links>
+      <Links url={""}>Minha playlist</Links>
+      <Links url={""}>Me pegue um café!</Links>
+      <Links url={""}>Conheça o curso DEV</Links>
+      </ul>
+
+      <div className="socialLinks">
+        <SocialLinks url={"https://github.com"} icon={"logo-github"} />
+        <SocialLinks url={"https://instagram.com"} icon={"logo-instagram"} />
+        <SocialLinks url={"https://youtube.com"} icon={"logo-youtube"} />
+        <SocialLinks url={"https://br.linkedin.com/"} icon={"logo-linkedin"} />
       </div>
-<div className="switch">
-  botão switch
-</div>
-      <div className='links'></div>
-      <div className='sociaislinks'></div>
-      <div className='rodape'></div>
-      
+
+      <Rodape>Larissa</Rodape>
+
     </div>
   )
 }
