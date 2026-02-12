@@ -1,12 +1,13 @@
 
 import './App.css'
+import Perfil from './components/Perfil/Perfil'
 
 function App() {
  
 
   return (
     <div id='app'>
-
+<Perfil/>
 
 
 

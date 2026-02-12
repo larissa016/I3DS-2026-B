@@ -1,11 +1,13 @@
 import React from 'react'
 
-const perfil = () => {
+const Perfil = () => {
   return (
-    <div>
-      perfil
+  <div className='perfil'> 
+   <img src="https://placehold.co/200x200" alt="" />
+        <p>@Larissa</p>
+      
     </div>
   )
 }
 
-export default perfil
+export default Perfil
