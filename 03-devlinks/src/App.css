@@ -9,6 +9,14 @@
 }
 
 #App {
+  height: 100px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+
+  
   font-family:" inter",sans-serif;
   color: var(--text-color);
   height: 100vh;
@@ -25,4 +33,16 @@
   flex-direction: column;
   gap: 16px;
   padding: 24px;
+}
+
+#SocialLinks{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  & a{
+    color: var(--text-color);
+    font-size: x-large;
+  }
+
 }

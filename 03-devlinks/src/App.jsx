@@ -4,6 +4,7 @@ import Links from './components/Links/Links'
 import Perfil from './components/Perfil/Perfil'
 import Rodape from './components/Rodape/Rodape'
 import SocialLinks from './components/SocialLinks/SocialLinks'
+import Switch from './components/Switch/switch'
 
 function App() {
  
@@ -14,7 +15,7 @@ function App() {
 
       <Perfil fotoPerfil={"https://placehold.co/100"}> Larissa</Perfil>
 
-      <div className="switch"> botão switch</div>
+     <Switch />
       
 <div id="Links">
       <ul>
