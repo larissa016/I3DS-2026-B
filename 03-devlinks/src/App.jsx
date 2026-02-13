@@ -1,4 +1,5 @@
 
+import { useState } from 'react'
 import './App.css'
 import Links from './components/Links/Links'
 import Perfil from './components/Perfil/Perfil'
@@ -8,14 +9,19 @@ import Switch from './components/Switch/switch'
 
 function App() {
  
-
+const[islight,setIslight]=useState(true);
+  const troca =() => {
+      setIslight(!islight);
+    };
   return (
 
-    <div id="App">
+   
+
+     <div id="App" className={islight ? "light" : ""}>
 
       <Perfil fotoPerfil={"https://placehold.co/100"}> Larissa</Perfil>
 
-     <Switch />
+       <Switch troca={troca} isLight={islight} />
       
 <div id="Links">
       <ul>

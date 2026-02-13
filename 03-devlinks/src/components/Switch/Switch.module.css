@@ -40,7 +40,7 @@
 }
 
 .light #Switch button {
-animation: slide-in 0.2 forwards;
+animation: slide-in 0.2s forwards;
 }
 /*animação*/
 @keyframes slide-in {
@@ -49,7 +49,7 @@ animation: slide-in 0.2 forwards;
 
     }
     to{
-        left: 50%;
+        left: 55%;
     }
 } 
 

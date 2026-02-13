@@ -1,4 +1,15 @@
 :root {
+  --bg-url: url(assets/bg-desktop.jpg);
+  --text-color: #fff;
+  --stroke-color: rgba(255, 255, 255, 0.5);
+  --surface-color: rgba(255, 255, 255, 0.1);
+  --surface-color-hover: rgba(255, 255, 255, 0.4);
+  --switch-bg-url: url(assets/MoonStars.svg);
+  --highlight-color: rgba(255, 255, 255, 0.2);
+}
+
+.light{
+  
   --bg-url: url(assets/bg-desktop-light.jpg);
   --text-color: #000;
   --stroke-color: rgba(0, 0, 0, 0.5);
@@ -25,6 +36,8 @@
   background-position: top center;
   background-size: cover;
   color: var(--text-color);
+
+  transition: background 0.2s;
 }
 
 #Links {
