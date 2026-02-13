@@ -16,7 +16,7 @@
   justify-content: center;
   gap: 20px;
 
-  
+
   font-family:" inter",sans-serif;
   color: var(--text-color);
   height: 100vh;
@@ -27,12 +27,20 @@
   color: var(--text-color);
 }
 
-#Links ul{
-  list-style-type: none;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  padding: 24px;
+#Links {
+    display: flex;
+    justify-content: center;
+
+ul {
+    width: 100%;
+
+    max-width: 588px;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 24px;
+}
 }
 
 #SocialLinks{
