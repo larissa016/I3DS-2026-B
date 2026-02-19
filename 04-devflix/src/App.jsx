@@ -1,13 +1,34 @@
 
+import { useEffect } from "react";
 import "./App.css";
 
 import logo from "./assets/devflix.png";
 import lupa from "./assets/search.svg";
 import Rodape from "./Componentes/Rodape/Rodape";
+import Moviecard from "./Componentes/Moviecard/Moviecard";
 
 const App = () => {
+const [ movies,setMovies]= userState([]);
 
-   
+//utilizando uma chave de API do aquivo. env
+const apiKey = import. meta.env.VITE_OMDB_API_KEY;
+ const apiUrl= 'https://omdbapi.com/?apikey= ${apikey}'; 
+
+ // criando a conexão com a API e trazendo informações
+
+ const searchMovies = async (title) => {
+  const response = await fetch('${apiUrl}&s=${title}');
+  const data = await response.json;
+
+  //Alimenrando a variedade movies
+  setMovies(data.search);
+ };
+
+useEffect(() => {
+  searchMovies("Batman");
+}, []);
+
+
   return (
     <div id="App">
       <img
@@ -23,7 +44,7 @@ const App = () => {
 <>
 
 </>
-
+<div classname="container"><movies.map(movie </div>
       <Rodape link={"https://github.com/Larissa016"}>Larissa</Rodape>
     </div>
   );
