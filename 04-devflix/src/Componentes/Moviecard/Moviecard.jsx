@@ -1,24 +1,24 @@
-import styles from "./Moviecard.module.css"
+import styles from "./Moviecard.module.css";
 
-const Moviecard = (props) => {
+const MovieCard = (props) => {
   return (
     <>
-    <div>className={styles.movie}
-      <p>{props.year}</p>
-    </div>
+      <div className={styles.movie}>
+        <div>
+          <p>{props.Year}</p>
+        </div>
 
+        <div>
+          <img src={props.Poster} alt={props.Title} />
+        </div>
 
-<div>
-    <img src={props.poster} alt={props.title}/>
-</div>
+        <div>
+          <span>{props.Type}</span>
+          <h3>{props.Title}</h3>
+        </div>
+      </div>
+    </>
+  );
+};
 
-<div>
-<span>{props.type}</span>
-<h3>{props.Title}</h3>
-</div>
-</>
-  )
-}
-
-
-export default Moviecard
+export default MovieCard;
