@@ -10,7 +10,7 @@
 
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 & div:nth-of-type(1){
-opacity: 1;
+opacity: 0;
 position:absolute ;
 inset-block-start:0 ;
 inset-inline: 0;
@@ -18,10 +18,13 @@ z-index: 3;
 text-align: center;
 width: 100%;
 top: 0;
-color: var(--text-secondary);
+color: var(--accent-color);
 transition: opacity 0.3s ease;
-padding: 16px;
+padding: 10px;
+
+background: var(--bg-secondary);
 }
+
 /*imagem*/
  & div:nth-of-type(2) {
         height: 100%;
@@ -32,6 +35,38 @@ padding: 16px;
             width: 100%;
         }
     }
+
+    /*Titulo*/
+& div:nth-of-type(3){
+    z-index: 2;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 16px 24px 24px;
+    background: var(--bg-secondary);
+
+    transition: all 0.3s ease;
+    &  span{
+        text-transform: uppercase;
+        font-size: 13px;
+        letter-spacing: 2px;
+        font-weight: bold;
+        color: var(--text-secondary);
+    }
+    & h3{
+        margin-top: 5px;
+        color: var(--accent-color);
+        transition: color 0.3s ease;
+    }
+}
+
+
+
+
+
+
+
 /* Estado ao passar o mouse encima do bloco "Moviecard"*/
 
     &:hover{
@@ -43,10 +78,10 @@ padding: 16px;
     }
 
     & div:nth-of-type(2) {
-        opacity: 0.3;
+        opacity: 0.7;
     }
 & div:nth-of-type(3){
-    background-color: transparent;
+  /*  background-color: transparent;*/
 }
 }
 
