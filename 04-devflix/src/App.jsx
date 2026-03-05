@@ -24,8 +24,10 @@ const App = () => {
   };
 
   useEffect(() => {
-    searchMovies("Chucky");
-
+    const fetchMovies = async () => {
+      await searchMovies("Chucky") // termo de pesquisa ao carregar o site;
+    };
+    fetchMovies();
   }, []);
 
   return (
