@@ -1,0 +1,12 @@
+footer{
+    text-align: center;
+    font-size: 14px;
+    padding-top: 24px;
+
+&  a{
+    color: var(--text-color);
+    color: var(--accent-color);
+   font-weight:bold;
+}
+
+}
