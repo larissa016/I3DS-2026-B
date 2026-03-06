@@ -2,16 +2,16 @@ import { useState } from "react";
 import styles from "./Moviecard.module.css";
 import MovieDescription from "../MovieDescription/MovieDescription";
 
-const Moviecard = (props) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+const CartaoFilme = (props) => {
+  const [modalAberto, setModalAberto] = useState(false);
 
-  const toggleModal = () => {
-    setIsModalOpen(!isModalOpen);
+  const alternarModal = () => {
+    setModalAberto(!modalAberto);
   };
 
   return (
     <>
-      <div className={styles.movie} onClick={toggleModal}>
+      <div className={styles.movie} onClick={alternarModal}>
 
         <div>
           <p>{props.Year}</p>
@@ -22,7 +22,7 @@ const Moviecard = (props) => {
         </div>
 
         <div className={styles.movieInfo}>
-          <span>{props.Type}</span>
+          <span>{props.Type === "movie" ? "Filme" : props.Type}</span>
           <h3>{props.Title}</h3>
 
           <span className={styles.rating}>
@@ -33,10 +33,10 @@ const Moviecard = (props) => {
 
       </div>
 
-      {isModalOpen && (
+      {modalAberto && (
         <MovieDescription
           apiUrl={props.apiUrl}
-          click={toggleModal}
+          click={alternarModal}
           movieID={props.imdbID}
         />
       )}
@@ -44,4 +44,4 @@ const Moviecard = (props) => {
   );
 };
 
-export default Moviecard;
+export default CartaoFilme;
