@@ -30,7 +30,7 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background: url('/blood-texture.png') repeat;
+  background: url("/blood-texture.png") repeat;
   opacity: 0.08;
   pointer-events: none;
   z-index: 0;
@@ -178,7 +178,9 @@ body::before {
 
 .movie:hover {
   transform: scale(1.08);
-  box-shadow: 0 0 35px #ff0000, 0 15px 35px rgba(0, 0, 0, 0.7);
+  box-shadow:
+    0 0 35px #ff0000,
+    0 15px 35px rgba(0, 0, 0, 0.7);
 }
 
 .movie img {
@@ -229,7 +231,9 @@ body::before {
   pointer-events: none;
   z-index: 10;
   transition: transform 0.3s;
-  animation: swing 4s infinite alternate ease-in-out, moveSide 6s infinite alternate ease-in-out;
+  animation:
+    swing 4s infinite alternate ease-in-out,
+    moveSide 6s infinite alternate ease-in-out;
 }
 
 .lariflixx {
