@@ -223,6 +223,7 @@ body::before {
   pointer-events: none;
 }
 
+/* Chucky */
 .chucky {
   position: fixed;
   left: 0;
@@ -236,66 +237,39 @@ body::before {
     moveSide 6s infinite alternate ease-in-out;
 }
 
+/* Logo Lariflixx */
 .lariflixx {
   animation: glow 2s infinite alternate;
 }
 
 /* Animations */
 @keyframes darkMove {
-  0% {
-    background-position: 0% 50%;
-  }
-  100% {
-    background-position: 100% 50%;
-  }
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
 }
 
 @keyframes pulse {
-  0% {
-    box-shadow: 0 0 5px #ff0000;
-  }
-  50% {
-    box-shadow: 0 0 15px #ff0000;
-  }
-  100% {
-    box-shadow: 0 0 5px #ff0000;
-  }
+  0% { box-shadow: 0 0 5px #ff0000; }
+  50% { box-shadow: 0 0 15px #ff0000; }
+  100% { box-shadow: 0 0 5px #ff0000; }
 }
 
 @keyframes swing {
-  0% {
-    transform: rotate(-5deg);
-  }
-  50% {
-    transform: rotate(5deg);
-  }
-  100% {
-    transform: rotate(-5deg);
-  }
+  0% { transform: rotate(-5deg); }
+  50% { transform: rotate(5deg); }
+  100% { transform: rotate(-5deg); }
 }
 
 @keyframes moveSide {
-  0% {
-    transform: translateX(0);
-  }
-  50% {
-    transform: translateX(10px);
-  }
-  100% {
-    transform: translateX(0);
-  }
+  0% { transform: translateX(0); }
+  50% { transform: translateX(10px); }
+  100% { transform: translateX(0); }
 }
 
 @keyframes glow {
-  0% {
-    filter: drop-shadow(0 0 5px #ff0000);
-  }
-  50% {
-    filter: drop-shadow(0 0 20px #ff0000);
-  }
-  100% {
-    filter: drop-shadow(0 0 15px #ff4500);
-  }
+  0% { filter: drop-shadow(0 0 5px #ff0000); }
+  50% { filter: drop-shadow(0 0 20px #ff0000); }
+  100% { filter: drop-shadow(0 0 15px #ff4500); }
 }
 
 /* Responsive Design */
@@ -308,8 +282,30 @@ body::before {
     width: 150px;
   }
 
+  /* Chucky menor e mais para baixo no canto */
   .chucky {
-    height: 500px;
-    top: 80px;
+    max-height: 200px;   /* bem menor */
+    width: auto;
+    transform: scale(0.4); /* escala menor */
+    top: 300px;          /* mais para baixo */
+    left: 0px;           /* canto esquerdo */
+    pointer-events: none;
+    z-index: 5;          /* atrás dos elementos principais */
+  }
+
+  /* Logo menor no celular */
+  .lariflixx {
+    width: 250px;
+    height: auto;
+  }
+
+  /* Botões e input menores */
+  .categorias button {
+    font-size: 0.8rem;
+    padding: 6px 10px;
+  }
+
+  .search input {
+    font-size: 0.9rem;
   }
 }

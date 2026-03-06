@@ -12,6 +12,7 @@ const App = () => {
   const [movies, setMovies] = useState([]);
   const [search, setSearch] = useState("");
   const [tema, setTema] = useState("dark");
+  const [lang, setLang] = useState("pt"); // idioma atual
 
   const apiKey = import.meta.env.VITE_OMDB_API_KEY;
   const apiUrl = `https://omdbapi.com/?apikey=${apiKey}`;
@@ -26,7 +27,6 @@ const App = () => {
 
   /* BUSCAR FILMES */
   const searchMovies = async (title) => {
-
     const response = await fetch(`${apiUrl}&s=${title}`);
     const data = await response.json();
 
@@ -34,14 +34,8 @@ const App = () => {
 
       const filmesTraduzidos = await Promise.all(
         data.Search.map(async (movie) => {
-
-          const tituloTraduzido = await traduzir(movie.Title);
-
-          return {
-            ...movie,
-            Title: tituloTraduzido
-          };
-
+          const tituloTraduzido = lang === "pt" ? await traduzir(movie.Title) : movie.Title;
+          return { ...movie, Title: tituloTraduzido };
         })
       );
 
@@ -57,26 +51,37 @@ const App = () => {
       await searchMovies("Chucky");
     };
     fetchMovies();
-  }, []);
+  }, [lang]); // re-executa busca se idioma mudar
+
+  /* Textos traduzíveis da interface */
+  const texts = {
+    pt: {
+      placeholder: "Pesquise por filmes e séries...",
+      categorias: ["🩸 Terror", "🔪 Suspense", "🪓 Terror com assassino", "👻 Fantasma", "🧟 Zumbi", "🧛 Vampiro"],
+      empty: "😔 Filme não encontrado",
+      translateBtn: "English"
+    },
+    en: {
+      placeholder: "Search for movies and series...",
+      categorias: ["🩸 Horror", "🔪 Thriller", "🪓 Slasher", "👻 Ghost", "🧟 Zombie", "🧛 Vampire"],
+      empty: "😔 Movie not found",
+      translateBtn: "Português"
+    }
+  };
 
   return (
-
     <div id="App" className={tema}>
-
-      {/* SANGUE */}
       <div className="blood"></div>
 
-      {/* BOTÃO TEMA */}
+      {/* BOTÕES TEMA */}
       <div className="tema">
+        <button onClick={() => setTema("light")}>☀️ Light</button>
+        <button onClick={() => setTema("dark")}>🌙 Dark</button>
 
-        <button onClick={() => setTema("light")}>
-          ☀️ Light
+        {/* BOTÃO DE TRADUÇÃO */}
+        <button onClick={() => setLang(lang === "pt" ? "en" : "pt")}>
+          {texts[lang].translateBtn}
         </button>
-
-        <button onClick={() => setTema("dark")}>
-          🌙 Dark
-        </button>
-
       </div>
 
       {/* LOGO */}
@@ -84,73 +89,38 @@ const App = () => {
 
       {/* CATEGORIAS */}
       <div className="categorias">
-
-      <div className="categorias">
-
-<button onClick={() => searchMovies("Horror")}>🩸 Terror</button>
-
-<button onClick={() => searchMovies("Thriller")}>🔪 Suspense</button>
-
-<button onClick={() => searchMovies("Slasher")}>🪓 Terror com assassino</button>
-
-<button onClick={() => searchMovies("Ghost")}>👻 Fantasma</button>
-
-<button onClick={() => searchMovies("Zombie")}>🧟 Zumbi</button>
-
-<button onClick={() => searchMovies("Vampire")}>🧛 Vampiro</button>
-
-</div>
-
+        {texts[lang].categorias.map((cat, index) => {
+          const searchTerm = cat.replace(/[^a-zA-Z]/g, ""); // remove emojis para a busca
+          return <button key={index} onClick={() => searchMovies(searchTerm)}>{cat}</button>;
+        })}
       </div>
 
-      {/* CHUCKY LATERAL */}
+      {/* CHUCKY */}
       <img src={chucky} alt="chucky" className="chucky" height="800" />
 
       {/* BUSCA */}
       <div className="search">
-
         <input
           onKeyDown={(e) => e.key === "Enter" && searchMovies(search)}
           onChange={(e) => setSearch(e.target.value)}
           type="text"
-          placeholder="Pesquise por filmes e séries..."
+          placeholder={texts[lang].placeholder}
         />
-
-        <img
-          onClick={() => searchMovies(search)}
-          src={lupa}
-          alt="buscar"
-        />
-
+        <img onClick={() => searchMovies(search)} src={lupa} alt="buscar" />
       </div>
 
       {/* FILMES */}
       {movies?.length > 0 ? (
-
         <div className="container">
-
           {movies.map((movie, index) => (
-            <Moviecard
-              key={index}
-              {...movie}
-              apiUrl={apiUrl}
-            />
+            <Moviecard key={index} {...movie} apiUrl={apiUrl} />
           ))}
-
         </div>
-
       ) : (
-
-        <h2 className="empty">
-          😔 Filme não encontrado
-        </h2>
-
+        <h2 className="empty">{texts[lang].empty}</h2>
       )}
 
-      <Rodape link={"https://github.com/Larissa016"}>
-        Larissa
-      </Rodape>
-
+      <Rodape link={"https://github.com/Larissa016"}>Larissa</Rodape>
     </div>
   );
 };
